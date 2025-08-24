@@ -1,0 +1,68 @@
+### OS / Editor ###
+.DS_Store
+Thumbs.db
+
+# VSCode / JetBrains Rider
+.vscode/
+.idea/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+### Build Artifacts ###
+# C# ビルド成果物
+bin/
+obj/
+out/
+
+# Avalonia ビルド一時ファイル
+*.dll
+*.exe
+*.pdb
+*.app
+*.dylib
+*.so
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.nuget/
+
+# 生成される lock
+project.lock.json
+project.fragment.lock.json
+
+### Logs ###
+*.log
+
+### Config / Secrets ###
+# APIキーや秘密情報
+*.env
+*.secrets.json
+secrets.json
+UserSecrets/
+
+# WSL / Docker
+*.pid
+*.sock
+*.db
+docker-compose.override.yml
+
+### LLM / Models ###
+# ローカルモデル（サイズ大）
+*.gguf
+*.bin
+*.pt
+*.onnx
+models/
+llm/
+
+# キャッシュ
+.cache/
+__pycache__/

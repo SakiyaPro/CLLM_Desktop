@@ -1,0 +1,47 @@
+<Window
+    x:Class="CLLM_Desktop.Views.ChatView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:CLLM_Desktop.ViewModels"
+    x:DataType="vm:ChatViewModel"
+    Width="1000" Height="700"
+    MinWidth="600" MinHeight="400"
+    Title="Chat">
+
+  <Border Padding="12">
+    <Grid RowDefinitions="*,Auto">
+
+      <!-- メッセージ一覧（VMの Messages をバインド） -->
+      <ScrollViewer Grid.Row="0">
+        <ItemsControl ItemsSource="{CompiledBinding Messages}">
+          <ItemsControl.ItemTemplate>
+            <!-- アイテム型はVM内で定義する MessageItem（下のVMコードに含めています） -->
+            <!-- CompiledBindingにしたい場合は x:DataType を付けられますが、まずは通常BindingでOK -->
+            <DataTemplate>
+              <StackPanel Margin="0,6">
+				<SelectableTextBlock  FontWeight="SemiBold" Text="{Binding Role}" />
+				<SelectableTextBlock  TextWrapping="Wrap" Text="{Binding Content}" />
+              </StackPanel>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ScrollViewer>
+
+      <!-- 入力と送信/中断（VMへ CompiledBinding） -->
+      <Grid Grid.Row="1" ColumnDefinitions="*,Auto,Auto" Margin="0,8,0,0">
+        <TextBox Grid.Column="0"
+                 AcceptsReturn="True"
+                 Text="{CompiledBinding Input, Mode=TwoWay}" />
+
+        <Button Grid.Column="1" Margin="8,0,0,0"
+                Content="Send"
+                Command="{CompiledBinding SendCommand}" />
+
+        <Button Grid.Column="2" Margin="8,0,0,0"
+                Content="Cancel"
+                Command="{CompiledBinding CancelCommand}" />
+      </Grid>
+
+    </Grid>
+  </Border>
+</Window>
